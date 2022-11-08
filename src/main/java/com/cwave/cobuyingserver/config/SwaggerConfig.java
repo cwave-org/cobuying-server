@@ -19,7 +19,7 @@ public class SwaggerConfig {
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo())
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.cwave.cobuyingserver"))
+                .apis(RequestHandlerSelectors.basePackage("com.cwave.cobuyingserver.controller"))
                 .paths(PathSelectors.any())
                 .build();
     }
