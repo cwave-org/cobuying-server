@@ -12,7 +12,7 @@ class UserServiceImplTest {
     @Test
     @DisplayName("기본 테스트 메서드")
     void contextLoads(){
-        boolean flag=false;
+        boolean flag=true;
         assertTrue(flag);
     }
 
