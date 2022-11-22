@@ -4,7 +4,6 @@ import com.cwave.cobuyingserver.config.ResponseConfig;
 import com.cwave.cobuyingserver.controller.v1.user.request.UserRequest;
 import com.cwave.cobuyingserver.domain.user.UserEntity;
 import com.cwave.cobuyingserver.domain.user.UserRepository;
-import com.cwave.cobuyingserver.service.user.request.CreateUserDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;

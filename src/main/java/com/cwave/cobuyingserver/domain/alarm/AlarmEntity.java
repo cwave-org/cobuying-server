@@ -22,7 +22,7 @@ public class AlarmEntity {
 
     @NotNull
     @Column(name="user_id")
-    private Long user_id;
+    private Long userId;
 
     @NotNull
     @Column(name="content")
@@ -33,8 +33,8 @@ public class AlarmEntity {
     private String type;
 
     @Builder
-    public AlarmEntity(Long user_id, String content, String type) {
-        this.user_id = user_id;
+    public AlarmEntity(Long userId, String content, String type) {
+        this.userId = userId;
         this.content = content;
         this.type = type;
     }
