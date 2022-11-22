@@ -48,12 +48,14 @@ public class UserEntity {
     public void setNickname(String nickname) {
         this.nickname = nickname;
     }
+    public void setAlarm(Boolean alarm) {this.alarm = alarm;}
     @Builder
-    public UserEntity(String fcmToken, String email, String nickname, String profileImg) {
+    public UserEntity(String fcmToken, String email, String nickname, String profileImg, Boolean alarm) {
         this.fcmToken = fcmToken;
         this.email = email;
         this.nickname = nickname;
         this.profileImg = profileImg;
+        this.alarm = alarm;
     }
     //그룹 List
     //등록한 상품(1:N)

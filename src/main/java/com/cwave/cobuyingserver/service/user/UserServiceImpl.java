@@ -101,14 +101,35 @@ public class UserServiceImpl {
                         .build());
     }
 
+    //회원 알람 서비스 변경
+    public ResponseEntity<?> updateAlarm(Long userId, Boolean newAlarm){
+        UserEntity userEntity = userRepository.findByUserId(userId);
+
+        if(userEntity != null){
+            userEntity.setAlarm(newAlarm);
+            userRepository.save(userEntity);
+            return ResponseEntity.status(200)
+                    .body(ResponseConfig.builder()
+                            .code(200)
+                            .message("알람 서비스를 변경합니다.")
+                            .data("알람:" + userEntity.getAlarm())
+                            .build());
+        }
+        return ResponseEntity.status(200)
+                .body(ResponseConfig.builder()
+                        .code(400)
+                        .message("해당 유저가 없습니다.")
+                        .data(-1)
+                        .build());
+    }
+
     private UserEntity createUserEntity(UserRequest userRequest) {
         return UserEntity.builder()
                 .fcmToken(userRequest.fcmToken())
                 .email(userRequest.email())
                 .nickname(userRequest.nickname())
                 .profileImg(userRequest.profileImg())
+                .alarm(true)
                 .build();
     }
-
-
 }
