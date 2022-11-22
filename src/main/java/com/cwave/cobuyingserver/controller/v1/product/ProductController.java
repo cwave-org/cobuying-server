@@ -7,10 +7,7 @@ import com.cwave.cobuyingserver.service.product.ProductServiceImpl;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/v1/products")
@@ -24,4 +21,12 @@ public class ProductController {
     public ResponseEntity<?> createProduct(@RequestBody ProductFormRequest productFormRequest) {
         return productServiceImpl.createProduct(productFormRequest);
     }
+
+    @GetMapping("")
+    @ApiOperation(value = "상품을 조회한다.", response = ProductFormResponse.class)
+    public ResponseEntity<?> getProduct(@RequestParam Long productId) {
+        return productServiceImpl.getProduct(productId);
+    }
+
+    
 }
