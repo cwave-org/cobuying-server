@@ -2,7 +2,6 @@ package com.cwave.cobuyingserver.controller.v1.user.request;
 
 import com.sun.istack.NotNull;
 import lombok.Builder;
-import lombok.Getter;
 
 public record UserRequest(
         @NotNull String email,
