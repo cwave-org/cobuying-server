@@ -30,5 +30,11 @@ public class UserController {
         return userServiceImpl.getUser(email);
     }
 
+    @PostMapping("/nickname")
+    @ApiOperation(value = "회원의 닉네임을 수정한다.", response = UserResponse.class)
+    public ResponseEntity<?> updateNickname(@RequestBody Long userId, String nickname) {
+        return userServiceImpl.updateNickname(userId, nickname);
+    }
+
 
 }
