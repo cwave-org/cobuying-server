@@ -33,4 +33,10 @@ public class ProductController {
     public ResponseEntity<?> updateProduct(@RequestParam Long productId, @RequestBody ProductFormRequest productFormRequest) {
         return productServiceImpl.updateProduct(productId, productFormRequest);
     }
+
+    @DeleteMapping("")
+    @ApiOperation(value="상품을 삭제한다.", response = ProductFormResponse.class)
+    public ResponseEntity<?> deleteProduct(@RequestParam Long productId) {
+        return productServiceImpl.deleteProduct(productId);
+    }
 }

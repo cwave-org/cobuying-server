@@ -85,6 +85,26 @@ public class ProductServiceImpl {
                         .build());
     }
 
+    //상품 삭제
+    public ResponseEntity<?> deleteProduct(Long ProductId){
+        ProductEntity productEntity = productRepository.findById(ProductId).orElse(null);
+        if(productEntity != null){
+            productRepository.delete(productEntity);
+            return ResponseEntity.status(200)
+                    .body(ResponseConfig.builder()
+                            .code(200)
+                            .message("상품을 삭제했습니다.")
+                            .data("상품번호: " + productEntity.getProductId())
+                            .build());
+        }
+        return ResponseEntity.status(200)
+                .body(ResponseConfig.builder()
+                        .code(200)
+                        .message("없는 상품입니다.")
+                        .data(-1)
+                        .build());
+    }
+
     private ProductEntity createProductEntity(ProductFormRequest productFormRequest) {
         return ProductEntity.builder()
                 .name(productFormRequest.name())
