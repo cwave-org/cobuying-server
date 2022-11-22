@@ -43,6 +43,14 @@ public class ProductEntity {
     @Column(name="explanation")
     private String explanation;
 
+    public void setName(String name) {
+        this.name = name;
+    }
+    public void setPrice(Long price) {this.price = price;}
+    public void setExplanation(String explanation) {this.explanation = explanation;}
+    public void setMainImage(String mainImage) {this.mainImage = mainImage;}
+    public void setCategory(String category) {this.category = category;}
+
     @Builder
     public ProductEntity(String category, String name, String mainImage, Long price, String explanation) {
         this.category = category;

@@ -28,5 +28,9 @@ public class ProductController {
         return productServiceImpl.getProduct(productId);
     }
 
-    
+    @PutMapping("")
+    @ApiOperation(value="상품을 수정한다.", response = ProductFormResponse.class)
+    public ResponseEntity<?> updateProduct(@RequestParam Long productId, @RequestBody ProductFormRequest productFormRequest) {
+        return productServiceImpl.updateProduct(productId, productFormRequest);
+    }
 }

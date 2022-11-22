@@ -61,6 +61,30 @@ public class ProductServiceImpl {
                         .build());
     }
 
+    //상품 수정
+    public ResponseEntity<?> updateProduct(Long ProductId, ProductFormRequest productFormRequest){
+        ProductEntity productEntity = productRepository.findById(ProductId).orElse(null);
+        if(productEntity != null){
+            productEntity.setName(productFormRequest.name());
+            productEntity.setPrice(productFormRequest.price());
+            productEntity.setCategory(productFormRequest.category());
+            productEntity.setExplanation(productFormRequest.explanation());
+            productRepository.save(productEntity);
+            return ResponseEntity.status(200)
+                    .body(ResponseConfig.builder()
+                            .code(200)
+                            .message("상품을 수정했습니다.")
+                            .data("상품번호: " + productEntity.getProductId() + ", 상품명: " + productEntity.getName() + ", 상품가격: " + productEntity.getPrice())
+                            .build());
+        }
+        return ResponseEntity.status(200)
+                .body(ResponseConfig.builder()
+                        .code(200)
+                        .message("없는 상품입니다.")
+                        .data(-1)
+                        .build());
+    }
+
     private ProductEntity createProductEntity(ProductFormRequest productFormRequest) {
         return ProductEntity.builder()
                 .name(productFormRequest.name())
