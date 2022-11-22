@@ -41,6 +41,24 @@ public class UserServiceImpl {
                         .build());
     }
 
+    //회원 조회
+    public ResponseEntity<?> getUser(String email) {
+        UserEntity userEntity = userRepository.findByEmail(email);
+        if(userEntity != null){
+            return ResponseEntity.status(200)
+                    .body(ResponseConfig.builder()
+                            .code(200)
+                            .message("이미 가입된 회원입니다.")
+                            .data(userEntity.getUserId())
+                            .build());
+        }
+        return ResponseEntity.status(200)
+                .body(ResponseConfig.builder()
+                        .code(200)
+                        .message("없는 회원입니다.")
+                        .data(-1)
+                        .build());
+    }
 
     private UserEntity createUserEntity(UserRequest userRequest) {
         return UserEntity.builder()

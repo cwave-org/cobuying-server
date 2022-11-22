@@ -22,7 +22,12 @@ public class UserController {
     @ApiOperation(value = "회원을 등록한다.", response = UserResponse.class)
     public ResponseEntity<?> createProduct(@RequestBody UserRequest userRequest) {
         return userServiceImpl.createUser(userRequest);
+    }
 
+    @GetMapping("")
+    @ApiOperation(value = "회원을 조회한다.", response = UserResponse.class)
+    public ResponseEntity<?> getUser(@RequestParam String email) {
+        return userServiceImpl.getUser(email);
     }
 
 
