@@ -60,6 +60,28 @@ public class UserServiceImpl {
                         .build());
     }
 
+    //회원 닉네임 변경
+    public ResponseEntity<?> updateNickname(Long userId, String newNickname){
+        UserEntity userEntity = userRepository.findByUserId(userId);
+
+        if(userEntity != null){
+            userEntity.setNickname(newNickname);
+            userRepository.save(userEntity);
+            return ResponseEntity.status(200)
+                    .body(ResponseConfig.builder()
+                            .code(200)
+                            .message("닉네임을 변경합니다.")
+                            .data(userEntity.getNickname())
+                            .build());
+        }
+        return ResponseEntity.status(200)
+                .body(ResponseConfig.builder()
+                        .code(400)
+                        .message("해당 유저가 없습니다.")
+                        .data(-1)
+                        .build());
+    }
+
     //회원 닉네임 조회
     public ResponseEntity<?> getNickname(Long userId) {
         UserEntity userEntity = userRepository.findByUserId(userId);
@@ -78,7 +100,7 @@ public class UserServiceImpl {
                         .data(-1)
                         .build());
     }
-    
+
     private UserEntity createUserEntity(UserRequest userRequest) {
         return UserEntity.builder()
                 .fcmToken(userRequest.fcmToken())
@@ -87,4 +109,6 @@ public class UserServiceImpl {
                 .profileImg(userRequest.profileImg())
                 .build();
     }
+
+
 }

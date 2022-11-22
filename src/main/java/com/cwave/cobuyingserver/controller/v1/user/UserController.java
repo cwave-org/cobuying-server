@@ -36,5 +36,9 @@ public class UserController {
         return userServiceImpl.updateNickname(userId, nickname);
     }
 
-
+    @GetMapping("/nickname")
+    @ApiOperation(value = "회원의 닉네임을 조회한다.", response = UserResponse.class)
+    public ResponseEntity<?> getNickname(@RequestParam Long userId) {
+        return userServiceImpl.getNickname(userId);
+    }
 }
