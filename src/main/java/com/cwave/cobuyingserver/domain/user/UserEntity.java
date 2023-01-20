@@ -45,6 +45,17 @@ public class UserEntity {
     @Column(name="alarm")
     private Boolean alarm;
 
+    //내가 등록한 상품(json)
+
+    //내가 참여한 공구(json)
+
+    //내가 찜한 상품(json)
+
+    //그룹 List
+    //등록한 상품(1:N)
+    //작성한 게시글(1:N)
+    //작성한 폼(1:N)
+
     public void setNickname(String nickname) {
         this.nickname = nickname;
     }
@@ -57,8 +68,5 @@ public class UserEntity {
         this.profileImg = profileImg;
         this.alarm = alarm;
     }
-    //그룹 List
-    //등록한 상품(1:N)
-    //작성한 게시글(1:N)
-    //작성한 폼(1:N)
+
 }
