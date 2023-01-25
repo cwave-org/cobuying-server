@@ -41,4 +41,10 @@ public class UserController {
     public ResponseEntity<?> getNickname(@RequestParam Long userId) {
         return userServiceImpl.getNickname(userId);
     }
+
+    @PostMapping("/alarm")
+    @ApiOperation(value = "회원의 알람을 수정한다.", response = UserResponse.class)
+    public ResponseEntity<?> updateAlarm(@RequestBody Long userId, Boolean alarm) {
+        return userServiceImpl.updateAlarm(userId, alarm);
+    }
 }
